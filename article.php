@@ -1,6 +1,9 @@
 <?php
-require('libraries/database.php');
-require('libraries/utils.php');
+require_once('libraries/database.php'); 
+require_once('libraries/utils.php');  
+require_once('libraries/models/Article.php');  
+require_once('libraries/models/Comment.php'); 
+
 
 /**
  * CE FICHIER DOIT AFFICHER UN ARTICLE ET SES COMMENTAIRES !
@@ -18,6 +21,8 @@ require('libraries/utils.php');
  */
 // On part du principe qu'on ne possède pas de param "id"
 $article_id = null;
+$articleModel=new Article();
+$commentModel=new Comments(); 
 
 // Mais si il y'en a un et que c'est un nombre entier, alors c'est bon!
 if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
@@ -45,7 +50,7 @@ if (!$article_id) {
  */
 
 // On fouille le résultat pour en extraire les données réelles de l'article
-$article = findArticle($article_id);
+$article = $articleModel->find($article_id); 
 
 
 /**
@@ -53,7 +58,7 @@ $article = findArticle($article_id);
  * Pareil, toujours une requête préparée pour sécuriser la donnée fournie par l'utilisateur 
  */
 
-$commentaires = findAllComments($article_id);
+$commentaires= $commentModel->findAll($article_id); 
 
 /**
  * 5. On affiche 
