@@ -30,7 +30,7 @@ Avant de pouvoir utiliser ce projet, assurez-vous que vous avez les éléments s
 ## Structure du projet
 Voici un aperçu de la structure du projet :
 
-   MiniProjPoo/
+   ```MiniProjPoo/
     ├── libraries/
     │   ├── database.php
     │   ├── utils.php
@@ -45,5 +45,5 @@ Voici un aperçu de la structure du projet :
     ├── delete-comment.php
     ├── index.php
     ├── README.md
-    └── save-comment.php  
+    └── save-comment.php  ```
     
