@@ -69,6 +69,4 @@ if ($query->rowCount() === 0) {
 $query = $pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
 $query->execute(compact('author', 'content', 'article_id'));
 
-// 4. Redirection vers l'article en question :
-header('Location: article.php?id=' . $article_id);
-exit();
+redirect('article.php?id=' . $article_id);
