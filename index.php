@@ -1,5 +1,6 @@
 <?php
 require('libraries/database.php'); 
+require('libraries/utils.php');
 
 /**
  * CE FICHIER A POUR BUT D'AFFICHER LA PAGE D'ACCUEIL !
@@ -27,9 +28,9 @@ $articles = $resultats->fetchAll();
 /**
  * 3. Affichage
  */
+
 $pageTitle = "Accueil";
-ob_start();
-require('templates/articles/index.html.php');
+render('articles/index', variables: ["Accueil" => $pageTitle, "articles" => $articles]);
 $pageContent = ob_get_clean();
 
 require('templates/layout.html.php');

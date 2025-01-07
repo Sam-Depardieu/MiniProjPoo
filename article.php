@@ -1,5 +1,7 @@
 <?php
 require('libraries/database.php');
+require('libraries/utils.php');
+
 /**
  * CE FICHIER DOIT AFFICHER UN ARTICLE ET SES COMMENTAIRES !
  * 
@@ -62,9 +64,13 @@ $commentaires = $query->fetchAll();
 /**
  * 5. On affiche 
  */
-$pageTitle = $article['title'];
-ob_start();
-require('templates/articles/show.html.php');
+$pageTitle = $article['title']; 
+render('articles/show', [ 
+    'pageTitle'=> $pageTitle, 
+    'article'=> $article, 
+    'commentaires'=>$commentaires, 
+    'article_id'=>$article_id 
+]); 
 $pageContent = ob_get_clean();
 
 require('templates/layout.html.php');
