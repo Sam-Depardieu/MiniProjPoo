@@ -1,17 +1,11 @@
 <?php
+require_once('libraries/models/Model.php'); 
 
-class Article{
-
-    private $pdo; 
- 
-    public function __construct() 
-    { 
-        $this->pdo = getPdo(); 
-    } 
+class Article extends Model{
 
     public function findAll() : array 
     { 
-         
+        
         $resultats = $this->pdo->query('SELECT * FROM articles ORDER BY created_at DESC'); 
         // On fouille le résultat pour en extraire les données réelles 
         $articles = $resultats->fetchAll();     

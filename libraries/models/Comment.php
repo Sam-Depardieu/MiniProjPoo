@@ -1,13 +1,7 @@
 <?php
+require_once('libraries/models/Model.php'); 
 
-class Comments{
-
-    private $pdo; 
- 
-    public function __construct() 
-    { 
-        $this->pdo = getPdo(); 
-    } 
+class Comments extends Model{
 
     public function find(int $id)
     {

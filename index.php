@@ -1,5 +1,5 @@
 <?php
-require('libraries/database.php'); 
+require_once('libraries/models/Model.php'); 
 require('libraries/utils.php');
 
 /**

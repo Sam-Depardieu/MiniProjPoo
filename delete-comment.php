@@ -1,5 +1,5 @@
 <?php
-require('libraries/database.php');
+require_once('libraries/models/Model.php'); 
 require('libraries/utils.php');
 /**
  * DANS CE FICHIER ON CHERCHE A SUPPRIMER LE COMMENTAIRE DONT L'ID EST PASSE EN PARAMETRE GET !
