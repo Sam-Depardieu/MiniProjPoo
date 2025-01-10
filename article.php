@@ -58,7 +58,7 @@ $article = $articleModel->find($article_id);
  * Pareil, toujours une requête préparée pour sécuriser la donnée fournie par l'utilisateur 
  */
 
-$commentaires= $commentModel->findAll($article_id); 
+$commentaires= $commentModel->findAllComments($article_id); 
 
 /**
  * 5. On affiche 

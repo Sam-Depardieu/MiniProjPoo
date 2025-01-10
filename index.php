@@ -1,7 +1,11 @@
 <?php
 require_once('libraries/models/Model.php'); 
 require('libraries/utils.php');
+require_once('libraries/models/User.php');  
+require_once('libraries/models/Article.php'); 
 
+
+$model = new Article();
 /**
  * CE FICHIER A POUR BUT D'AFFICHER LA PAGE D'ACCUEIL !
  * 
@@ -22,7 +26,7 @@ $pdo = getPdo();
  */
 // On utilisera ici la méthode query (pas besoin de préparation car aucune variable n'entre en jeu)
 // On fouille le résultat pour en extraire les données réelles
-$articles = findAllArticles();
+$articles = $model->findAll("created_at DESC"); 
 
 /**
  * 3. Affichage
@@ -31,5 +35,7 @@ $articles = findAllArticles();
 $pageTitle = "Accueil";
 render('articles/index', variables: ["Accueil" => $pageTitle, "articles" => $articles]);
 $pageContent = ob_get_clean();
+
+
 
 require('templates/layout.html.php');

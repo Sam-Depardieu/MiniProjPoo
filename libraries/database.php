@@ -71,7 +71,7 @@ function insertComment($author, $content, $article_id): void
     $query->execute(['author'=>$author, 'content'=>$content, 'article_id'=>$article_id]);
 }
 
-function deleteComment(int $id): void
+function delete(int $id): void
 {
     $pdo =getPdo(); 
     $query = $pdo->prepare("DELETE FROM comments WHERE id = :id"); 

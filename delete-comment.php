@@ -43,7 +43,7 @@ if (!$commentaire) {
  
 $article_id = $commentaire['article_id'];
 
-deleteComment($commentaire['id']);
+$model->delete($commentaire['id']);
 
 /**
  * 5. Redirection vers l'article en question
