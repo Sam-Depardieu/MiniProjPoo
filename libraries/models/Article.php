@@ -2,11 +2,17 @@
 
 class Article{
 
+    private $pdo; 
+ 
+    public function __construct() 
+    { 
+        $this->pdo = getPdo(); 
+    } 
 
     public function findAll() : array 
     { 
-        $pdo =getPdo(); 
-        $resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC'); 
+         
+        $resultats = $this->pdo->query('SELECT * FROM articles ORDER BY created_at DESC'); 
         // On fouille le résultat pour en extraire les données réelles 
         $articles = $resultats->fetchAll();     
         return $articles; 
@@ -14,8 +20,8 @@ class Article{
 
     public function find(int $id) 
     { 
-        $pdo =getPdo(); 
-        $query = $pdo->prepare("SELECT * FROM articles WHERE id = :article_id"); 
+         
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE id = :article_id"); 
         // On exécute la requête en précisant le paramètre :article_id  
         $query->execute(['article_id' => $id]); 
      
@@ -27,8 +33,8 @@ class Article{
 
     public function delete(int $id): void
     {
-        $pdo =getPdo(); 
-        $query = $pdo->prepare("DELETE FROM articles WHERE id = :article_id"); 
+         
+        $query = $this->pdo->prepare("DELETE FROM articles WHERE id = :article_id"); 
         // On exécute la requête en précisant le paramètre :article_id  
         $query->execute(['article_id' => $id]); 
     
